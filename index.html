@@ -3,27 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Бланк индивидуального заказа распределительного устройства EVOL</h1>
-<form class="order__form form" action="">
-    <fieldset>
-        <legend>Сечение кабеля</legend>
-        <input type="radio" name="cross_section" id="ip44" checked>
-        <label for="ip44">IP44</label>
-        <input type="radio" name="cross_section" id="ip67">
-        <label for="ip67">IP67</label>
-    </fieldset>
-    <fieldset>
-        <legend>Ввод:</legend>
-        <input type="radio" name="plug" id="plug_1" checked>
-        <label for="plug_1">вилка встроенная</label>
-        <input type="radio" name="plug" id="plug_2">
-        <label for="plug_2">вилка на кабеле</label>
-        <input type="radio" name="plug" id="plug_3">
-        <label for="plug_3">клеменное присоединение</label>
-    </fieldset>
-</form>
+
+<div class="container">
+    <h1 class="title">Бланк индивидуального заказа распределительного устройства EVOL</h1>
+    <form class="order__form form" action="">
+        <fieldset class="form__fieldset form__fieldset--count count">
+            <legend class="visually-hidden">Количество (шт.):</legend>
+            <div class="count__wrapper">
+                <label class="count__label" for="count">Количество (шт.):</label>
+                <input class="count__input" type="number" name="count" id="count">
+            </div>
+        </fieldset>
+        <fieldset class="form__fieldset form__fieldset--type type">
+            <legend class="visually-hidden">Тип распределительного устройства:</legend>
+            <h2 class="type__title">Тип распределительного устройства:</h2>
+            <div class="type__wrapper">
+                <ul class="type__options">
+                    <li>
+                        <input class="test visually-hidden" type="radio" name="type" id="type_1" checked>
+                        <label for="type_1">мобильное (переносное)</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="type" id="type_2">
+                        <label for="type_2">стационарное</label>
+                    </li>
+                </ul>
+            </div>
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <legend>Степень защиты распредустройства:</legend>
+            <ul class="">
+                <li>
+                    <input type="radio" name="level" id="ip44" checked>
+                    <label for="ip44">IP44</label>
+                </li>
+                <li>
+                    <input type="radio" name="level" id="ip67">
+                    <label for="ip67">IP67</label>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <legend>Ввод:</legend>
+            <ul class="">
+                <li>
+                    <input type="radio" name="plug" id="plug_1" checked>
+                    <label for="plug_1">вилка встроенная</label>
+                </li>
+                <li>
+                    <input type="radio" name="plug" id="plug_2">
+                    <label for="plug_2">вилка на кабеле</label>
+                </li>
+                <li>
+                    <input type="radio" name="plug" id="plug_3">
+                    <label for="plug_3">клеменное присоединение</label>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <legend>Сеченние кабеля (если необходим), мм:</legend>
+            <input type="number" name="cross" id="cross">
+            <label class="visually-hidden" for="cross">сечение</label>
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <legend>Длина кабеля (если необходим), м:</legend>
+            <input type="number" name="length" id="length">
+            <label class="visually-hidden" for="length">длина</label>
+        </fieldset>
+        <fieldset class="form__fieldset form__fieldset--port">
+            <legend>Разъемы:</legend>
+            <div class="form__port port">
+                <h2 class="port__title">220v (2P+E)</h2>
+                <div class="port__column">
+                    <p class="port__th">Сила тока(A)</p>
+                    <p class="port__th">Кол-во, шт.</p>
+                </div>
+                <ul class="port__options">
+                    <li class="port__item">
+                        <label class="port__label" for="1">16A&#160;(CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="1" checked>
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="2">32A&#160;(CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="2">
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="3">63A&#160;(CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="3">
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="4">125A&#160;(CEE)</label>
+                        <input class="port__input"v type="number" name="220v" id="4">
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="5">16A&#160;(Schuko)</label>
+                        <input class="port__input" type="number" name="220v" id="5">
+                    </li>
+                </ul>
+            </div>
+            <div class="form__port port">
+                <h2 class="port__title">380v (3P+E)</h2>
+                <div class="port__column">
+                    <p class="port__th">Сила тока(A)</p>
+                    <p class="port__th">Кол-во, шт.</p>
+                </div>
+                <ul class="port__options">
+                    <li class="port__item">
+                        <label class="port__label" for="380_1">16A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_1" checked>
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="380_2">32A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_2">
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="380_3">63A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_3">
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="380_4">125A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_4">
+                    </li>
+                </ul>
+            </div>
+            <div class="form__port port">
+                <h2 class="port__title">380v (3P+E)</h2>
+                <div class="port__column">
+                    <p class="port__th">Сила тока(A)</p>
+                    <p class="port__th">Кол-во, шт.</p>
+                </div>
+                <ul class="port__options">
+                    <li class="port__item">
+                        <label class="port__label" for="380_n_1">16A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_n_1" checked>
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="380_n_2">32A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_n_2" checked>
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="380_n_3">63A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_n_3" checked>
+                    </li>
+                    <li class="port__item">
+                        <label class="port__label" for="380_n_4">125A (CEE)</label>
+                        <input class="port__input" type="number" name="220v" id="380_n_4" checked>
+                    </li>
+                </ul>
+            </div>
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <legend>Aвтоматические выключатели и УЗО:</legend>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <legend>Дополнительные требования:</legend>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </fieldset>
+        <fieldset class="form__fieldset form__fieldset--name" >
+            <legend>Бланк индивидуального заказа распределительного устройства EVOL</legend>
+            <input type="text" name="name" id="name">
+            <label for="name">Контактное лицо:</label>
+            <input type="text" name="company" id="company">
+            <label for="company">Организация:</label>
+            <input type="text" name="city" id="city">
+            <label for="city">Город:</label>
+            <input type="text" name="phone" id="phone">
+            <label for="phone">Телефон:</label>
+            <input type="email" name="email" id="email">
+            <label for="email">E-mail:</label>
+        </fieldset>
+        <button class="form__submit" type="submit">Отправить</button>
+    </form>
+</div>
 <script src="js/backend.js"></script>
 </body>
 </html>

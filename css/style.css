@@ -1,0 +1,165 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+   padding: 0 120px;
+}
+
+.title {
+    padding: 0 100px;
+    text-align: center;
+}
+.order__form {
+    /*background-color: azure;*/
+}
+.form__fieldset {
+    display: flex;
+    margin: 0 0 20px 0;
+    padding: 0;
+    border: 0;
+}
+ul {
+    /*margin: 0;*/
+    /*padding: 0;*/
+    list-style: none;
+}
+input {
+    border: 1px solid orange;
+}
+textarea {
+   border: 1px solid orange;
+}
+input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+input[type="radio"]+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid orange;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+
+input[type="radio"]:checked+label::before {
+  /*border-color: #ef750b;*/
+  /*background-color: #deb996;*/
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='black' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+.count__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.count__label {
+    margin: 0 10px 0 0 ;
+}
+.count__input {
+    width: 40px;
+}
+
+.form__fieldset--type {
+
+}
+.type__title {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: normal;
+}
+.type__options {
+    list-style: none;
+}
+
+.type__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.form__port {
+   width: 180px;
+}
+
+.form__fieldset--port {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.port {
+    display: flex;
+    flex-direction: column;
+}
+
+.port__title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border: 1px solid orange;
+
+}
+.port__column {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.port__th {
+    flex-basis: 50%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid orange;
+    font-size: 15px;
+}
+
+.port__options {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.port__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.port__label {
+    flex-basis: 50%;
+    border: 1px solid orange;
+    border-right: none;
+}
+
+.port__input {
+    max-width: 85px;
+    flex-basis: 50%;
+    border: 1px solid orange;
+}
+
+.form__fieldset--name {
+    flex-direction: column;
+}
