@@ -1,10 +1,17 @@
 'use strict'
 
 const form = document.querySelector('.order__form');
-
+const submit = form.querySelector('.form__submit');
+const inputType = {
+    NUMBER: 'number',
+    RADIO: 'radio',
+    TEXT: 'text',
+    PHONE: 'phone',
+    EMAIL: 'email'
+}
 // const obj = {
 //     legend: '',
-//     inputs: [ ]
+//     inputs: []
 // };
 
 // const inputObj = {
@@ -12,45 +19,74 @@ const form = document.querySelector('.order__form');
 //     type: ''
 //     value: '',
 //     label: '',
-//     checked: bool
+//     checked: bool,
+//     description: ''
 // }
 
 const objList = [];
 
-console.log(form);
-form.querySelectorAll('.form__fieldset').forEach(item => {
-    let obj = {};
+const getVisibleElement = (element) => {
+    return (element.classList.contains('visually-hidden')) ? '' : element.textContent;
+}
 
-    obj.legend = item.querySelector('legend').textContent
-    obj.inputs = []
+const getDescription = (input) => {
+    let description = ''
+    const section = input.closest('section');
+    if (section) {
+        description =  getVisibleElement(section.querySelector('h2'));
+    }
 
-    item.querySelectorAll('input').forEach(i => {
-        let inputObj = {}
-        inputObj.name = i.name
-        inputObj.type = i.type
-        inputObj.value = i.value
-        inputObj.label = i.labels[0].textContent
-        inputObj.checked = i.checked
-        obj.inputs.push(inputObj);
-    })
-    console.log(obj)
-    objList.push(obj);
-});
+    return description;
+}
 
+const getFormElements = () => {
+    form.querySelectorAll('.form__fieldset').forEach(item => {
+        let obj = {};
+
+        obj.legend = getVisibleElement(item.querySelector('legend'));
+        obj.inputs = []
+        item.querySelectorAll('input, textarea').forEach(i => {
+            let inputObj = {}
+            inputObj.name = i.name
+            inputObj.type = i.type
+            inputObj.value = i.value
+            inputObj.label = getVisibleElement(i.labels[0])
+            inputObj.checked = i.checked
+            inputObj.description = getDescription(i)
+            obj.inputs.push(inputObj);
+        })
+        objList.push(obj);
+    });
+}
+
+
+const handleInput = (input) => {
+    if (input.type === inputType.RADIO && input.checked) {
+        console.log(input.label);
+    } else if (input.type !== inputType.RADIO && input.value) {
+        console.log(input.label + ' ' + input.value);
+        if (input.description) {
+            console.log('(' + input.description + ')');
+        }
+    }
+}
 
 const makeReport = () => {
+    getFormElements();
     objList.forEach(item => {
-        console.log(item.legend + '\n');
-        item.inputs.forEach(i => {
-            console.log(i.label + ' :' + i.value);
-        })
+        console.log('==START===')
+        if (item.legend) {
+            console.log(item.legend + '\n')
+        }
+        item.inputs.forEach(handleInput);
+        console.log('==END===')
     });
 };
-makeReport()
 
+const submitClickHandler = (evt) => {
+    evt.preventDefault();
+    makeReport();
+}
 
+submit.addEventListener('click', submitClickHandler)
 
-// TODO
-// 1. Посмотри как работать с FormData
-// 2. Бери выбранные поля ( см. index.html ) и сформируй заказ
-// 3. Разберись как отправить сформированный отчет на почту. Например https://smtpjs.com/
